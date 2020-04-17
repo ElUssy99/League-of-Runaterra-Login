@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body action="/login" method="post">
+    <h1>Usuario: <%= usuario.nombre_usuario %></h1>
+    <h2>Mazos</h2>
+    <ul>
+      <% for( var i=0; i < listaMazos.length; i++) { %>
+        <h3>Mazo <%= i+1 %>:</h3>
+        <li>
+          <%= listaMazos[i].id_mazo + ' - ' + listaMazos[i].nombre_mazo + ' - ' + listaMazos[i].valor_mazo%>
+        </li>
+        <% for( var x=0; x < cartasDelMazos.length; x++) { %>
+
+          <% if (cartasDelMazos[x].length == listaMazos[i].cartas_en_mazo.length) { %>
+            <%var cartas = cartasDelMazos[x]%>
+            <h4>Cartas del mazo:</h4>
+            <% cartas.forEach(function(carta) { %>
+              <li><%= carta %></li>
+            <% }); %>
+          <% } %>
+
+        <% } %>
+      <% } %>
+    </ul>
+
+    <h2>Cartas:</h2>
+    <ul>
+      <% for( var i=0; i < listaCartas.length; i++) { %>
+        <li>
+          <%= listaCartas[i].id + ' - ' + listaCartas[i].tipo + ' - ' + listaCartas[i].nombre_carta + ' - ' + listaCartas[i].coste_invocacion + ' - ' + listaCartas[i].ataque + ' - ' + listaCartas[i].vida + ' - ' + listaCartas[i].habilidad_especial + ' - ' + listaCartas[i].faccion%>
+        </li>
+      <% } %>
+    </ul>
+  </body>
+</html>
